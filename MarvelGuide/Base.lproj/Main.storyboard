@@ -10,21 +10,58 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Heroes-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="MarvelGuide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ggt-L2-L6O">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i0t-4i-LlX">
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ggt-L2-L6O" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="29b-4K-KIW"/>
+                            <constraint firstItem="ggt-L2-L6O" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9GP-dH-f3X"/>
+                            <constraint firstItem="i0t-4i-LlX" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Mhd-Hw-5ys"/>
+                            <constraint firstItem="i0t-4i-LlX" firstAttribute="top" secondItem="ggt-L2-L6O" secondAttribute="bottom" id="NAd-Pk-Ga8"/>
+                            <constraint firstItem="i0t-4i-LlX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lbP-7I-V0l"/>
+                            <constraint firstItem="i0t-4i-LlX" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="vYa-nV-5gs"/>
+                            <constraint firstItem="ggt-L2-L6O" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="wvK-C0-och"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="fXR-Bd-r91"/>
+                    <navigationItem key="navigationItem" title="Heroes" id="fXR-Bd-r91"/>
+                    <connections>
+                        <segue destination="YRz-H1-MvW" kind="show" identifier="heroInfoSegue" id="rcX-PJ-CZU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1076" y="133.5832083958021"/>
+        </scene>
+        <!--Character View Controller-->
+        <scene sceneID="7Zd-kE-Ocq">
+            <objects>
+                <viewController id="YRz-H1-MvW" customClass="CharacterViewController" customModule="MarvelGuide" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sak-E2-jcg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="yB8-9I-GHj"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fRb-Hg-m6l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2167" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="leo-pC-DbB">
@@ -34,6 +71,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DNa-xg-Sr9">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.035294117649999998" green="0.078431372550000003" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
