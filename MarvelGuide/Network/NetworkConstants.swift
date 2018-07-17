@@ -9,6 +9,6 @@
 import Foundation
 
 struct NetworkConstants {
-    static let baseURL = "https://gateway.marvel.com:443/v1/public/characters"
+    static let baseURL = "https://gateway.marvel.com:443/v1/public"
     static let key = "635ce616aac356fe4fd2eb0c653b426e"
 }

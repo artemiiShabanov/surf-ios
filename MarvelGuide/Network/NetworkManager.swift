@@ -9,4 +9,13 @@
 import Foundation
 import Alamofire
 
-
+class NetworkManager {
+    
+    public var delegate: NetworkDelegate
+    
+    init(delegate: NetworkDelegate) {
+        self.delegate = delegate
+    }
+    
+    
+}
