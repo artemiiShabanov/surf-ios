@@ -14,6 +14,9 @@
 		A41611A320FCC60B0075326A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A41611A220FCC60B0075326A /* Assets.xcassets */; };
 		A41611A620FCC60B0075326A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A41611A420FCC60B0075326A /* LaunchScreen.storyboard */; };
 		A41611AE20FCCC9A0075326A /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41611AD20FCCC9A0075326A /* CharacterViewController.swift */; };
+		A4353A7F20FE623400A3755B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4353A7E20FE623400A3755B /* NetworkManager.swift */; };
+		A4353A8120FE628C00A3755B /* NetworkDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4353A8020FE628C00A3755B /* NetworkDelegate.swift */; };
+		A4353A8320FE62A400A3755B /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4353A8220FE62A400A3755B /* NetworkConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		A41611A520FCC60B0075326A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A41611A720FCC60B0075326A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A41611AD20FCCC9A0075326A /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
+		A4353A7E20FE623400A3755B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		A4353A8020FE628C00A3755B /* NetworkDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDelegate.swift; sourceTree = "<group>"; };
+		A4353A8220FE62A400A3755B /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 		A47821B5B5CA7C381BE53E1C /* Pods-MarvelGuide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelGuide.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelGuide/Pods-MarvelGuide.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,6 +78,7 @@
 		A416119A20FCC60A0075326A /* MarvelGuide */ = {
 			isa = PBXGroup;
 			children = (
+				A4353A7D20FE5B6300A3755B /* Network */,
 				A416119B20FCC60A0075326A /* AppDelegate.swift */,
 				A416119D20FCC60A0075326A /* ViewController.swift */,
 				A41611AD20FCCC9A0075326A /* CharacterViewController.swift */,
@@ -81,6 +88,16 @@
 				A41611A720FCC60B0075326A /* Info.plist */,
 			);
 			path = MarvelGuide;
+			sourceTree = "<group>";
+		};
+		A4353A7D20FE5B6300A3755B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A4353A7E20FE623400A3755B /* NetworkManager.swift */,
+				A4353A8020FE628C00A3755B /* NetworkDelegate.swift */,
+				A4353A8220FE62A400A3755B /* NetworkConstants.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		C968A7662CE0DEC6FC6B40D7 /* Frameworks */ = {
@@ -203,6 +220,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4353A8320FE62A400A3755B /* NetworkConstants.swift in Sources */,
+				A4353A7F20FE623400A3755B /* NetworkManager.swift in Sources */,
+				A4353A8120FE628C00A3755B /* NetworkDelegate.swift in Sources */,
 				A41611AE20FCCC9A0075326A /* CharacterViewController.swift in Sources */,
 				A416119E20FCC60A0075326A /* ViewController.swift in Sources */,
 				A416119C20FCC60A0075326A /* AppDelegate.swift in Sources */,
@@ -353,7 +373,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9JH2U4SKKP;
 				INFOPLIST_FILE = MarvelGuide/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vsu.MarvelGuide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -369,7 +392,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9JH2U4SKKP;
 				INFOPLIST_FILE = MarvelGuide/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = vsu.MarvelGuide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
