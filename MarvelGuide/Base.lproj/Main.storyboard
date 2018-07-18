@@ -47,6 +47,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Heroes" id="fXR-Bd-r91"/>
                     <connections>
+                        <outlet property="searchBar" destination="ggt-L2-L6O" id="3Gq-HH-B6C"/>
+                        <outlet property="tableView" destination="i0t-4i-LlX" id="PC5-gj-zdn"/>
                         <segue destination="YRz-H1-MvW" kind="show" identifier="heroInfoSegue" id="rcX-PJ-CZU"/>
                     </connections>
                 </viewController>

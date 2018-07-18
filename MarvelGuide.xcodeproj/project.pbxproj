@@ -14,9 +14,12 @@
 		A41611A320FCC60B0075326A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A41611A220FCC60B0075326A /* Assets.xcassets */; };
 		A41611A620FCC60B0075326A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A41611A420FCC60B0075326A /* LaunchScreen.storyboard */; };
 		A41611AE20FCCC9A0075326A /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41611AD20FCCC9A0075326A /* CharacterViewController.swift */; };
-		A4353A7F20FE623400A3755B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4353A7E20FE623400A3755B /* NetworkManager.swift */; };
+		A4353A7F20FE623400A3755B /* MarvelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4353A7E20FE623400A3755B /* MarvelAPI.swift */; };
 		A4353A8320FE62A400A3755B /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4353A8220FE62A400A3755B /* NetworkConstants.swift */; };
 		A4353A8720FF5F1500A3755B /* MarvelCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4353A8620FF5F1500A3755B /* MarvelCharacter.swift */; };
+		A4353A8B20FF830300A3755B /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4353A8920FF830300A3755B /* CharacterTableViewCell.swift */; };
+		A4353A8C20FF830300A3755B /* CharacterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4353A8A20FF830300A3755B /* CharacterTableViewCell.xib */; };
+		A4353A9520FF942E00A3755B /* HelpfullExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4353A9420FF942E00A3755B /* HelpfullExtentions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,9 +33,12 @@
 		A41611A520FCC60B0075326A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A41611A720FCC60B0075326A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A41611AD20FCCC9A0075326A /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
-		A4353A7E20FE623400A3755B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		A4353A7E20FE623400A3755B /* MarvelAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAPI.swift; sourceTree = "<group>"; };
 		A4353A8220FE62A400A3755B /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 		A4353A8620FF5F1500A3755B /* MarvelCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCharacter.swift; sourceTree = "<group>"; };
+		A4353A8920FF830300A3755B /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
+		A4353A8A20FF830300A3755B /* CharacterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterTableViewCell.xib; sourceTree = "<group>"; };
+		A4353A9420FF942E00A3755B /* HelpfullExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpfullExtentions.swift; sourceTree = "<group>"; };
 		A47821B5B5CA7C381BE53E1C /* Pods-MarvelGuide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelGuide.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelGuide/Pods-MarvelGuide.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,8 +84,10 @@
 		A416119A20FCC60A0075326A /* MarvelGuide */ = {
 			isa = PBXGroup;
 			children = (
-				A4353A8620FF5F1500A3755B /* MarvelCharacter.swift */,
+				A4353A9320FF941900A3755B /* Helpers */,
 				A4353A7D20FE5B6300A3755B /* Network */,
+				A4353A8820FF82CA00A3755B /* Cells */,
+				A4353A8620FF5F1500A3755B /* MarvelCharacter.swift */,
 				A416119B20FCC60A0075326A /* AppDelegate.swift */,
 				A416119F20FCC60A0075326A /* Main.storyboard */,
 				A416119D20FCC60A0075326A /* ViewController.swift */,
@@ -94,10 +102,27 @@
 		A4353A7D20FE5B6300A3755B /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				A4353A7E20FE623400A3755B /* NetworkManager.swift */,
+				A4353A7E20FE623400A3755B /* MarvelAPI.swift */,
 				A4353A8220FE62A400A3755B /* NetworkConstants.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		A4353A8820FF82CA00A3755B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A4353A8920FF830300A3755B /* CharacterTableViewCell.swift */,
+				A4353A8A20FF830300A3755B /* CharacterTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A4353A9320FF941900A3755B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A4353A9420FF942E00A3755B /* HelpfullExtentions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		C968A7662CE0DEC6FC6B40D7 /* Frameworks */ = {
@@ -171,6 +196,7 @@
 				A41611A620FCC60B0075326A /* LaunchScreen.storyboard in Resources */,
 				A41611A320FCC60B0075326A /* Assets.xcassets in Resources */,
 				A41611A120FCC60A0075326A /* Main.storyboard in Resources */,
+				A4353A8C20FF830300A3755B /* CharacterTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,11 +229,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MarvelGuide/Pods-MarvelGuide-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftHash/SwiftHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,8 +250,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4353A9520FF942E00A3755B /* HelpfullExtentions.swift in Sources */,
 				A4353A8320FE62A400A3755B /* NetworkConstants.swift in Sources */,
-				A4353A7F20FE623400A3755B /* NetworkManager.swift in Sources */,
+				A4353A8B20FF830300A3755B /* CharacterTableViewCell.swift in Sources */,
+				A4353A7F20FE623400A3755B /* MarvelAPI.swift in Sources */,
 				A41611AE20FCCC9A0075326A /* CharacterViewController.swift in Sources */,
 				A4353A8720FF5F1500A3755B /* MarvelCharacter.swift in Sources */,
 				A416119E20FCC60A0075326A /* ViewController.swift in Sources */,
