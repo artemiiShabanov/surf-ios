@@ -9,9 +9,10 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
