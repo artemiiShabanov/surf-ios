@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,11 +28,12 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdH-Jf-JnQ">
                         <rect key="frame" x="20" y="38.5" width="303" height="24"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" name="marvel-red"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="wkT-pE-EZO" secondAttribute="trailing" id="6Tg-TJ-pRX"/>
                     <constraint firstItem="wkT-pE-EZO" firstAttribute="leading" secondItem="tdH-Jf-JnQ" secondAttribute="trailing" constant="20" id="FRE-Uo-52Z"/>
@@ -49,4 +51,9 @@
             <point key="canvasLocation" x="95.5" y="82.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="marvel-red">
+            <color red="0.9137254901960784" green="0.0" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

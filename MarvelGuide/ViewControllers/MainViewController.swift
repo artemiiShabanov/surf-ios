@@ -10,6 +10,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    @IBOutlet weak var startTypingLabel: UILabel!
     @IBOutlet fileprivate weak var searchBar: UISearchBar!
     @IBOutlet fileprivate weak var tableView: UITableView!
     private var characters = [MarvelCharacter]()
@@ -18,16 +19,17 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationItem.title = "Characters"
         
-        tableView.separatorStyle = .none
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.isHidden = true
         tableView.register(UINib(nibName: "CharacterTableViewCell", bundle: nil), forCellReuseIdentifier: CharacterTableViewCell.reuseId)
         
         searchBar.delegate = self
         
     }
-
+    
 }
 
 
@@ -52,16 +54,16 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        //adding word to realm
-//        let word = Word()
-//        word.word = filteredWords[indexPath.row]
-//        word.definition = dict[word.word]
-//        if !alreadyHaveWords.contains(word.word) {
-//            try? realm.write {
-//                realm.add(word)
-//            }
-//            self.dismiss(animated: true, completion: nil)
-//        }
+        //        //adding word to realm
+        //        let word = Word()
+        //        word.word = filteredWords[indexPath.row]
+        //        word.definition = dict[word.word]
+        //        if !alreadyHaveWords.contains(word.word) {
+        //            try? realm.write {
+        //                realm.add(word)
+        //            }
+        //            self.dismiss(animated: true, completion: nil)
+        //        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -74,23 +76,37 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: searchBar section
 extension MainViewController: UISearchBarDelegate {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        downloadCharacters(startsWith: searchBar.text!) {characters1 in
-            self.characters = characters1
-            self.tableView.reloadData()
+        if let searchText = searchBar.text {
+            if searchText != "" {
+                downloadCharacters(startsWith: searchText) { characters in
+                    self.characters = characters
+                    self.tableView.reloadData()
+                    self.tableView.isHidden = false
+                }
+            } else {
+                tableView.isHidden = true
+            }
         }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        downloadCharacters(startsWith: searchBar.text!) {characters1 in
-            self.characters = characters1
-            self.tableView.reloadData()
+        if let searchText = searchBar.text {
+            if searchText != "" {
+                downloadCharacters(startsWith: searchText) { characters in
+                    self.characters = characters
+                    self.tableView.reloadData()
+                    self.tableView.isHidden = false
+                }
+            } else {
+                tableView.isHidden = true
+            }
         }
     }
     
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        downloadCharacters(startsWith: searchText) {characters1 in
-//            self.characters = characters1
-//            self.tableView.reloadData()
-//        }
-//    }
+    //    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    //        downloadCharacters(startsWith: searchText) {characters1 in
+    //            self.characters = characters1
+    //            self.tableView.reloadData()
+    //        }
+    //    }
 }
