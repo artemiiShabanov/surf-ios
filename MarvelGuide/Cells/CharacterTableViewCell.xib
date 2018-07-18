@@ -26,14 +26,15 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdH-Jf-JnQ">
-                        <rect key="frame" x="20" y="32.5" width="71" height="36"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                        <rect key="frame" x="20" y="38.5" width="303" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="wkT-pE-EZO" secondAttribute="trailing" id="6Tg-TJ-pRX"/>
+                    <constraint firstItem="wkT-pE-EZO" firstAttribute="leading" secondItem="tdH-Jf-JnQ" secondAttribute="trailing" constant="20" id="FRE-Uo-52Z"/>
                     <constraint firstItem="tdH-Jf-JnQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="H5Z-CR-zXB"/>
                     <constraint firstItem="wkT-pE-EZO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="HTJ-iT-dk9"/>
                     <constraint firstAttribute="bottom" secondItem="wkT-pE-EZO" secondAttribute="bottom" id="fFA-Tt-tfx"/>

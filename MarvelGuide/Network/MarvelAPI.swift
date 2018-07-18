@@ -33,7 +33,7 @@ func downloadCharacters(startsWith prefix:String, completion: @escaping ([Marvel
             print(json)
             for (_, subjson) in json["data"]["results"] {
                 let thumbnail = subjson["thumbnail"]
-                if let id = subjson["id"].int, let name = subjson["name"].string, let disc = subjson["discription"].string, let path = thumbnail["path"].string, let ext = thumbnail["extension"].string {
+                if let id = subjson["id"].int, let name = subjson["name"].string, let disc = subjson["description"].string, let path = thumbnail["path"].string, let ext = thumbnail["extension"].string {
                     characters.append(MarvelCharacter(id: id, name: name, description: disc == "" ? nil : disc, thumbnail: (path, ext)))
                 }
             }

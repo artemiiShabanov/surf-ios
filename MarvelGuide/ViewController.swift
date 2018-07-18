@@ -18,13 +18,14 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        tableView.separatorStyle = .none
         tableView.dataSource = self
         tableView.delegate = self
-        downloadCharacters(startsWith: "doctor") {characters1 in
-            self.characters = characters1
-            self.tableView.reloadData()
-        }
+        tableView.register(UINib(nibName: "CharacterTableViewCell", bundle: nil), forCellReuseIdentifier: CharacterTableViewCell.reuseId)
+        
+        searchBar.delegate = self
+        
     }
 
 }
@@ -45,7 +46,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.reuseId) as? CharacterTableViewCell
             else { fatalError("Fatal error") }
-        cell.configure(name: characters[indexPath.row].name)
+        let character = characters[indexPath.row]
+        cell.configure(name: character.name, thumbnail: character.thumbnail.path)
         return cell
     }
     
@@ -62,4 +64,33 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 //        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100.0
+    }
+}
+
+// MARK: searchBar section
+extension MainViewController: UISearchBarDelegate {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        downloadCharacters(startsWith: searchBar.text!) {characters1 in
+            self.characters = characters1
+            self.tableView.reloadData()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        downloadCharacters(startsWith: searchBar.text!) {characters1 in
+            self.characters = characters1
+            self.tableView.reloadData()
+        }
+    }
+    
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        downloadCharacters(startsWith: searchText) {characters1 in
+//            self.characters = characters1
+//            self.tableView.reloadData()
+//        }
+//    }
 }
