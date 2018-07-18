@@ -9,24 +9,22 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
-import SwiftHash
+import CryptoSwift
 
 func downloadCharacters(startsWith prefix:String, completion: @escaping ([MarvelCharacter]) -> Void) {
  
     let url = NetworkConstants.baseURL + "/characters"
-    let ts = Date().timeIntervalSince1970.description//String(Date().toMillis())
-    print(ts)
-    //print(ts + NetworkConstants.privateKey + NetworkConstants.publicKey)
+    let ts = Date().toMillisString()
     let parameters: Parameters = [
         "nameStartsWith": prefix,
         "orderBy": "name",
         "limit": 20,
         "ts": ts,
         "apikey": NetworkConstants.publicKey,
-        "hash": MD5("\(ts)\(NetworkConstants.privateKey)\(NetworkConstants.publicKey)")
+        "hash": "\(ts)\(NetworkConstants.privateKey)\(NetworkConstants.publicKey)".md5()
     ]
     
-     Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
+    Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
         
         switch response.result {
         case .success(let value):

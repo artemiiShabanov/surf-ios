@@ -12,8 +12,8 @@ import Kingfisher
 
 
 extension Date {
-    func toMillis() -> Int64! {
-        return Int64(self.timeIntervalSince1970 * 1000)
+    func toMillisString() -> String {
+        return self.timeIntervalSince1970.description
     }
 }
 
