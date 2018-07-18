@@ -11,6 +11,6 @@ import Foundation
 struct MarvelCharacter {
     let id: Int
     let name: String
-    let description: String
+    let description: String?
     let thumbnail: (path: String, ext:String)
 }
