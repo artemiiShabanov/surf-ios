@@ -15,7 +15,7 @@
             <connections>
                 <outlet property="searchBar" destination="ekX-Ic-jKj" id="wsJ-Qx-8N5"/>
                 <outlet property="spinner" destination="SGQ-oV-yxE" id="ZKz-WX-BEv"/>
-                <outlet property="startTypingLabel" destination="eCQ-Ij-HWw" id="JYx-mn-35L"/>
+                <outlet property="statusLabel" destination="eCQ-Ij-HWw" id="xXJ-lK-ApX"/>
                 <outlet property="tableView" destination="jqk-dm-Eer" id="1xH-FN-IST"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

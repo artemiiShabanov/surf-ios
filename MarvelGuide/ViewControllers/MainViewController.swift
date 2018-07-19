@@ -11,7 +11,7 @@ import UIKit
 class MainViewController: UIViewController {
     
     @IBOutlet fileprivate weak var spinner: UIActivityIndicatorView!
-    @IBOutlet fileprivate weak var startTypingLabel: UILabel!
+    @IBOutlet fileprivate weak var statusLabel: UILabel!
     @IBOutlet fileprivate weak var searchBar: UISearchBar!
     @IBOutlet fileprivate weak var tableView: UITableView!
     private var characters = [MarvelCharacter]()
@@ -79,32 +79,43 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: searchBar section
 extension MainViewController: UISearchBarDelegate {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        if let searchText = searchBar.text {
-            if searchText != "" {
-                downloadCharacters(startsWith: searchText) { characters in
-                    self.characters = characters
-                    self.tableView.reloadData()
-                    self.tableView.isHidden = false
-                }
-            } else {
-                tableView.isHidden = true
-            }
-        }
+//        if let searchText = searchBar.text {
+//            if searchText != "" {
+//                downloadCharacters(startsWith: searchText) { characters in
+//                    self.characters = characters
+//                    self.tableView.reloadData()
+//                    self.tableView.isHidden = false
+//                }
+//            } else {
+//                tableView.isHidden = true
+//            }
+//        }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchText = searchBar.text {
             if searchText != "" {
                 spinner.startAnimating()
-                startTypingLabel.isHidden = true
-                downloadCharacters(startsWith: searchText) { characters in
+                downloadCharacters(startsWith: searchText) { optCharacters in
+                    guard let characters = optCharacters else{
+                        self.tableView.isHidden = true
+                        self.statusLabel.text = "Oops! Some problems with internet connection"
+                        self.spinner.stopAnimating()
+                        return
+                    }
+                    if characters.isEmpty{
+                        self.tableView.isHidden = true
+                        self.statusLabel.text = "Sorry. There are no characters starts like \"\(searchText)\""
+                        self.spinner.stopAnimating()
+                        return
+                    }
                     self.characters = characters
                     self.tableView.reloadData()
                     self.tableView.isHidden = false
-                    self.startTypingLabel.isHidden = false
                     self.spinner.stopAnimating()
                 }
             } else {
+                statusLabel.text = "Start typing"
                 tableView.isHidden = true
             }
         }

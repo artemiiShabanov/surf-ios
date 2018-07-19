@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 import CryptoSwift
 
-func downloadCharacters(startsWith prefix:String, completion: @escaping ([MarvelCharacter]) -> Void) {
+func downloadCharacters(startsWith prefix:String, completion: @escaping ([MarvelCharacter]?) -> Void) {
  
     let url = NetworkConstants.baseURL + "/characters"
     let ts = Date().toMillisString()
@@ -41,6 +41,7 @@ func downloadCharacters(startsWith prefix:String, completion: @escaping ([Marvel
             
         case .failure(let error):
             print(error)
+            completion(nil)
         }
         
     }
