@@ -16,7 +16,11 @@ class CharacterTableViewCell: UITableViewCell {
     
     public func configure(name: String, thumbnail: (path: String, ext: String)) {
         nameLabel.text = name
-        thumbnailImageView.download(image: thumbnail.path.secureURL() + "." + thumbnail.ext)
+        if thumbnail.path.hasSuffix("image_not_available") {
+            thumbnailImageView.image = #imageLiteral(resourceName: "question")
+        } else {
+            thumbnailImageView.download(image: thumbnail.path.secureURL() + "." + thumbnail.ext)
+        }
     }
     
     override func awakeFromNib() {
