@@ -21,13 +21,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wkT-pE-EZO">
-                        <rect key="frame" x="343" y="0.0" width="100" height="100.5"/>
+                        <rect key="frame" x="333" y="10" width="100" height="80.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" id="fDK-yD-iaS"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdH-Jf-JnQ">
-                        <rect key="frame" x="20" y="38.5" width="303" height="24"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdH-Jf-JnQ">
+                        <rect key="frame" x="20" y="38.5" width="293" height="24"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -35,11 +35,11 @@
                 </subviews>
                 <color key="backgroundColor" name="marvel-red"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="wkT-pE-EZO" secondAttribute="trailing" id="6Tg-TJ-pRX"/>
+                    <constraint firstAttribute="trailing" secondItem="wkT-pE-EZO" secondAttribute="trailing" constant="10" id="6Tg-TJ-pRX"/>
                     <constraint firstItem="wkT-pE-EZO" firstAttribute="leading" secondItem="tdH-Jf-JnQ" secondAttribute="trailing" constant="20" id="FRE-Uo-52Z"/>
                     <constraint firstItem="tdH-Jf-JnQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="H5Z-CR-zXB"/>
-                    <constraint firstItem="wkT-pE-EZO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="HTJ-iT-dk9"/>
-                    <constraint firstAttribute="bottom" secondItem="wkT-pE-EZO" secondAttribute="bottom" id="fFA-Tt-tfx"/>
+                    <constraint firstItem="wkT-pE-EZO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="HTJ-iT-dk9"/>
+                    <constraint firstAttribute="bottom" secondItem="wkT-pE-EZO" secondAttribute="bottom" constant="10" id="mTP-Zb-ReL"/>
                     <constraint firstItem="tdH-Jf-JnQ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="npL-1L-6Tb"/>
                 </constraints>
             </tableViewCellContentView>
@@ -48,7 +48,7 @@
                 <outlet property="nameLabel" destination="tdH-Jf-JnQ" id="aEt-bn-25h"/>
                 <outlet property="thumbnailImageView" destination="wkT-pE-EZO" id="Y5K-mv-Kg4"/>
             </connections>
-            <point key="canvasLocation" x="95.5" y="82.5"/>
+            <point key="canvasLocation" x="97.5" y="87.5"/>
         </tableViewCell>
     </objects>
     <resources>

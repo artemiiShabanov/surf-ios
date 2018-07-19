@@ -24,6 +24,7 @@ class MainViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.isHidden = true
+        tableView.separatorStyle = .none
         tableView.register(UINib(nibName: "CharacterTableViewCell", bundle: nil), forCellReuseIdentifier: CharacterTableViewCell.reuseId)
         
         searchBar.delegate = self
@@ -49,7 +50,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.reuseId) as? CharacterTableViewCell
             else { fatalError("Fatal error") }
         let character = characters[indexPath.row]
-        cell.configure(name: character.name, thumbnail: character.thumbnail.path)
+        cell.configure(name: character.name, thumbnail: character.thumbnail)
         return cell
     }
     
@@ -69,7 +70,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0
+        return 120.0
     }
 }
 

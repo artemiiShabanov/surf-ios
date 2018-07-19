@@ -25,3 +25,16 @@ extension UIImageView {
         self.kf.setImage(with: ImageResource(downloadURL: imageURL))
     }
 }
+
+extension String {
+    func secureURL() -> String {
+        if self.hasPrefix("http://") {
+            let range = self.range(of: "http://")
+            var newPath = self
+            newPath.removeSubrange(range!)
+            return "https://" + newPath
+        } else {
+            return self
+        }
+    }
+}

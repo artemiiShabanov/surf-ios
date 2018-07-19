@@ -14,9 +14,9 @@ class CharacterTableViewCell: UITableViewCell {
     @IBOutlet fileprivate weak var nameLabel: UILabel!
     public static let reuseId = "CharacterTableViewCell_reuseId"
     
-    public func configure(name: String, thumbnail path: String) {
+    public func configure(name: String, thumbnail: (path: String, ext: String)) {
         nameLabel.text = name
-        thumbnailImageView.download(image: path)
+        thumbnailImageView.download(image: thumbnail.path.secureURL() + "." + thumbnail.ext)
     }
     
     override func awakeFromNib() {
