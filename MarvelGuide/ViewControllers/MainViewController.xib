@@ -14,6 +14,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="MarvelGuide" customModuleProvider="target">
             <connections>
                 <outlet property="searchBar" destination="ekX-Ic-jKj" id="wsJ-Qx-8N5"/>
+                <outlet property="spinner" destination="SGQ-oV-yxE" id="ZKz-WX-BEv"/>
                 <outlet property="startTypingLabel" destination="eCQ-Ij-HWw" id="JYx-mn-35L"/>
                 <outlet property="tableView" destination="jqk-dm-Eer" id="1xH-FN-IST"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -25,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start typing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCQ-Ij-HWw">
-                    <rect key="frame" x="143" y="323" width="88.5" height="21"/>
+                    <rect key="frame" x="143" y="361" width="89" height="21"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -39,6 +40,10 @@
                         <string>Title</string>
                     </scopeButtonTitles>
                 </searchBar>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="SGQ-oV-yxE">
+                    <rect key="frame" x="315" y="38" width="20" height="20"/>
+                    <color key="color" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </activityIndicatorView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" indicatorStyle="white" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jqk-dm-Eer">
                     <rect key="frame" x="0.0" y="76" width="375" height="591"/>
                     <color key="backgroundColor" name="marvel-red"/>
@@ -46,11 +51,13 @@
             </subviews>
             <color key="backgroundColor" name="marvel-red"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SGQ-oV-yxE" secondAttribute="trailing" constant="40" id="7YD-mZ-CVU"/>
                 <constraint firstItem="ekX-Ic-jKj" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="7ca-Ie-Bk2"/>
+                <constraint firstItem="SGQ-oV-yxE" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="18" id="7qa-tu-Wt5"/>
+                <constraint firstItem="eCQ-Ij-HWw" firstAttribute="centerY" secondItem="jqk-dm-Eer" secondAttribute="centerY" id="DYw-0L-5PM"/>
+                <constraint firstItem="eCQ-Ij-HWw" firstAttribute="centerX" secondItem="jqk-dm-Eer" secondAttribute="centerX" id="Ir3-ed-jZf"/>
                 <constraint firstItem="ekX-Ic-jKj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Ld6-bG-Fvm"/>
                 <constraint firstItem="ekX-Ic-jKj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Mcn-xk-pwg"/>
-                <constraint firstItem="eCQ-Ij-HWw" firstAttribute="centerX" secondItem="jqk-dm-Eer" secondAttribute="centerX" id="QjV-UF-AE0"/>
-                <constraint firstItem="eCQ-Ij-HWw" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="VIP-a0-USL"/>
                 <constraint firstItem="jqk-dm-Eer" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bty-uB-RXo"/>
                 <constraint firstItem="jqk-dm-Eer" firstAttribute="top" secondItem="ekX-Ic-jKj" secondAttribute="bottom" id="lQ0-Bd-bzi"/>
                 <constraint firstItem="jqk-dm-Eer" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="mG4-Xb-Xa8"/>

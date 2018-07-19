@@ -10,7 +10,8 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    @IBOutlet weak var startTypingLabel: UILabel!
+    @IBOutlet fileprivate weak var spinner: UIActivityIndicatorView!
+    @IBOutlet fileprivate weak var startTypingLabel: UILabel!
     @IBOutlet fileprivate weak var searchBar: UISearchBar!
     @IBOutlet fileprivate weak var tableView: UITableView!
     private var characters = [MarvelCharacter]()
@@ -29,6 +30,7 @@ class MainViewController: UIViewController {
         
         searchBar.delegate = self
         
+        spinner.stopAnimating()
     }
     
 }
@@ -93,10 +95,14 @@ extension MainViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchText = searchBar.text {
             if searchText != "" {
+                spinner.startAnimating()
+                startTypingLabel.isHidden = true
                 downloadCharacters(startsWith: searchText) { characters in
                     self.characters = characters
                     self.tableView.reloadData()
                     self.tableView.isHidden = false
+                    self.startTypingLabel.isHidden = false
+                    self.spinner.stopAnimating()
                 }
             } else {
                 tableView.isHidden = true
