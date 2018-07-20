@@ -24,6 +24,13 @@ extension UIImageView {
         }
         self.kf.setImage(with: ImageResource(downloadURL: imageURL))
     }
+    
+    func makeRound() {
+        self.layer.cornerRadius = self.frame.size.width / 2
+        self.clipsToBounds = true
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.white.cgColor
+    }
 }
 
 extension String {

@@ -21,8 +21,14 @@
 		A4353A9A20FFC72F00A3755B /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4353A9820FFC72F00A3755B /* MainViewController.xib */; };
 		A4353A9D20FFC8B600A3755B /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4353A9B20FFC8B600A3755B /* CharacterViewController.swift */; };
 		A4353A9E20FFC8B600A3755B /* CharacterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4353A9C20FFC8B600A3755B /* CharacterViewController.xib */; };
-		A4353AA12101C2EE00A3755B /* ConnectedCharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4353A9F2101C2EE00A3755B /* ConnectedCharacterTableViewCell.swift */; };
-		A4353AA22101C2EE00A3755B /* ConnectedCharacterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4353AA02101C2EE00A3755B /* ConnectedCharacterTableViewCell.xib */; };
+		A4353AA5210214D200A3755B /* ThumbnailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4353AA3210214D200A3755B /* ThumbnailTableViewCell.swift */; };
+		A4353AA6210214D200A3755B /* ThumbnailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4353AA4210214D200A3755B /* ThumbnailTableViewCell.xib */; };
+		A4353AA9210214E700A3755B /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4353AA7210214E700A3755B /* DescriptionTableViewCell.swift */; };
+		A4353AAA210214E700A3755B /* DescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4353AA8210214E700A3755B /* DescriptionTableViewCell.xib */; };
+		A4353AAD2102150F00A3755B /* ConnectedCharactersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4353AAB2102150F00A3755B /* ConnectedCharactersTableViewCell.swift */; };
+		A4353AAE2102150F00A3755B /* ConnectedCharactersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4353AAC2102150F00A3755B /* ConnectedCharactersTableViewCell.xib */; };
+		A4353AB121021B8F00A3755B /* ConnectedCharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4353AAF21021B8F00A3755B /* ConnectedCharacterCollectionViewCell.swift */; };
+		A4353AB221021B8F00A3755B /* ConnectedCharacterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4353AB021021B8F00A3755B /* ConnectedCharacterCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,8 +49,14 @@
 		A4353A9820FFC72F00A3755B /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		A4353A9B20FFC8B600A3755B /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
 		A4353A9C20FFC8B600A3755B /* CharacterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterViewController.xib; sourceTree = "<group>"; };
-		A4353A9F2101C2EE00A3755B /* ConnectedCharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedCharacterTableViewCell.swift; sourceTree = "<group>"; };
-		A4353AA02101C2EE00A3755B /* ConnectedCharacterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectedCharacterTableViewCell.xib; sourceTree = "<group>"; };
+		A4353AA3210214D200A3755B /* ThumbnailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailTableViewCell.swift; sourceTree = "<group>"; };
+		A4353AA4210214D200A3755B /* ThumbnailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThumbnailTableViewCell.xib; sourceTree = "<group>"; };
+		A4353AA7210214E700A3755B /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		A4353AA8210214E700A3755B /* DescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionTableViewCell.xib; sourceTree = "<group>"; };
+		A4353AAB2102150F00A3755B /* ConnectedCharactersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedCharactersTableViewCell.swift; sourceTree = "<group>"; };
+		A4353AAC2102150F00A3755B /* ConnectedCharactersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectedCharactersTableViewCell.xib; sourceTree = "<group>"; };
+		A4353AAF21021B8F00A3755B /* ConnectedCharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedCharacterCollectionViewCell.swift; sourceTree = "<group>"; };
+		A4353AB021021B8F00A3755B /* ConnectedCharacterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectedCharacterCollectionViewCell.xib; sourceTree = "<group>"; };
 		A47821B5B5CA7C381BE53E1C /* Pods-MarvelGuide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelGuide.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelGuide/Pods-MarvelGuide.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,10 +127,8 @@
 		A4353A8820FF82CA00A3755B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				A4353A8920FF830300A3755B /* CharacterTableViewCell.swift */,
-				A4353A8A20FF830300A3755B /* CharacterTableViewCell.xib */,
-				A4353A9F2101C2EE00A3755B /* ConnectedCharacterTableViewCell.swift */,
-				A4353AA02101C2EE00A3755B /* ConnectedCharacterTableViewCell.xib */,
+				A4353AB42102564300A3755B /* Character */,
+				A4353AB32102563400A3755B /* Main */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -140,6 +150,30 @@
 				A4353A9C20FFC8B600A3755B /* CharacterViewController.xib */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A4353AB32102563400A3755B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				A4353A8920FF830300A3755B /* CharacterTableViewCell.swift */,
+				A4353A8A20FF830300A3755B /* CharacterTableViewCell.xib */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		A4353AB42102564300A3755B /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				A4353AA3210214D200A3755B /* ThumbnailTableViewCell.swift */,
+				A4353AA4210214D200A3755B /* ThumbnailTableViewCell.xib */,
+				A4353AA7210214E700A3755B /* DescriptionTableViewCell.swift */,
+				A4353AA8210214E700A3755B /* DescriptionTableViewCell.xib */,
+				A4353AAB2102150F00A3755B /* ConnectedCharactersTableViewCell.swift */,
+				A4353AAC2102150F00A3755B /* ConnectedCharactersTableViewCell.xib */,
+				A4353AAF21021B8F00A3755B /* ConnectedCharacterCollectionViewCell.swift */,
+				A4353AB021021B8F00A3755B /* ConnectedCharacterCollectionViewCell.xib */,
+			);
+			path = Character;
 			sourceTree = "<group>";
 		};
 		C968A7662CE0DEC6FC6B40D7 /* Frameworks */ = {
@@ -211,9 +245,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4353A9E20FFC8B600A3755B /* CharacterViewController.xib in Resources */,
-				A4353AA22101C2EE00A3755B /* ConnectedCharacterTableViewCell.xib in Resources */,
+				A4353AAE2102150F00A3755B /* ConnectedCharactersTableViewCell.xib in Resources */,
 				A41611A620FCC60B0075326A /* LaunchScreen.storyboard in Resources */,
+				A4353AB221021B8F00A3755B /* ConnectedCharacterCollectionViewCell.xib in Resources */,
 				A41611A320FCC60B0075326A /* Assets.xcassets in Resources */,
+				A4353AAA210214E700A3755B /* DescriptionTableViewCell.xib in Resources */,
+				A4353AA6210214D200A3755B /* ThumbnailTableViewCell.xib in Resources */,
 				A4353A9A20FFC72F00A3755B /* MainViewController.xib in Resources */,
 				A4353A8C20FF830300A3755B /* CharacterTableViewCell.xib in Resources */,
 			);
@@ -273,15 +310,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4353AA5210214D200A3755B /* ThumbnailTableViewCell.swift in Sources */,
 				A4353A9520FF942E00A3755B /* HelpfullExtentions.swift in Sources */,
+				A4353AA9210214E700A3755B /* DescriptionTableViewCell.swift in Sources */,
 				A4353A8320FE62A400A3755B /* NetworkConstants.swift in Sources */,
-				A4353AA12101C2EE00A3755B /* ConnectedCharacterTableViewCell.swift in Sources */,
 				A4353A8B20FF830300A3755B /* CharacterTableViewCell.swift in Sources */,
 				A4353A7F20FE623400A3755B /* MarvelAPI.swift in Sources */,
 				A4353A8720FF5F1500A3755B /* MarvelCharacter.swift in Sources */,
 				A4353A9D20FFC8B600A3755B /* CharacterViewController.swift in Sources */,
 				A4353A9920FFC72F00A3755B /* MainViewController.swift in Sources */,
 				A416119C20FCC60A0075326A /* AppDelegate.swift in Sources */,
+				A4353AAD2102150F00A3755B /* ConnectedCharactersTableViewCell.swift in Sources */,
+				A4353AB121021B8F00A3755B /* ConnectedCharacterCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

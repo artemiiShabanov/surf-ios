@@ -12,6 +12,7 @@ import SwiftyJSON
 import CryptoSwift
 
 struct MarvelAPI {
+    
     static func downloadCharacters(startsWith prefix:String, completion: @escaping ([MarvelCharacter]?) -> Void) {
      
         let url = NetworkConstants.baseURL + "/characters"
@@ -31,7 +32,6 @@ struct MarvelAPI {
             case .success(let value):
                 let json = JSON(value)
                 var characters =  [MarvelCharacter]()
-                print(json)
                 for (_, subjson) in json["data"]["results"] {
                     let thumbnail = subjson["thumbnail"]
                     if let id = subjson["id"].int, let name = subjson["name"].string, let disc = subjson["description"].string, let path = thumbnail["path"].string, let ext = thumbnail["extension"].string {
@@ -45,6 +45,67 @@ struct MarvelAPI {
                 completion(nil)
             }
             
+        }
+    }
+    
+    
+    static func downloadByOneCharactersConnected(with character: MarvelCharacter, completion: @escaping ((character: MarvelCharacter, event: String)) -> Void) {
+        
+        //First getting events for character Id
+        let url = NetworkConstants.baseURL + "/characters/\(character.id)/events"
+        let ts = Date().toMillisString()
+        let parameters: Parameters = [
+            "limit": 5,
+            "ts": ts,
+            "apikey": NetworkConstants.publicKey,
+            "hash": "\(ts)\(NetworkConstants.privateKey)\(NetworkConstants.publicKey)".md5()
+        ]
+        
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
+            
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                //print(json)
+                for (_, subjson) in json["data"]["results"] {
+                    var i = 5
+                    for (_, subSubjson) in subjson["characters"]["items"] {
+                        downloadCharacterBy(uri: subSubjson["resourceURI"].stringValue, with: subjson["title"].stringValue, completion: completion)
+                        i -= 1
+                        if i == 0 { break }
+                    }
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
+            
+        }
+    }
+    
+    static private func downloadCharacterBy(uri: String, with event: String, completion: @escaping ((character: MarvelCharacter, event: String)) -> Void) {
+        let ts = Date().toMillisString()
+        let parameters: Parameters = [
+            "ts": ts,
+            "apikey": NetworkConstants.publicKey,
+            "hash": "\(ts)\(NetworkConstants.privateKey)\(NetworkConstants.publicKey)".md5()
+        ]
+        
+        Alamofire.request(uri, method: .get, parameters: parameters).responseJSON { response in
+            
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                //print(json)
+                for (_, subjson) in json["data"]["results"] {
+                    let thumbnail = subjson["thumbnail"]
+                    if let id = subjson["id"].int, let name = subjson["name"].string, let disc = subjson["description"].string, let path = thumbnail["path"].string, let ext = thumbnail["extension"].string {
+                        completion((MarvelCharacter(id: id, name: name, description: disc == "" ? nil : disc, thumbnail: (path, ext)), event))
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
         }
     }
 }

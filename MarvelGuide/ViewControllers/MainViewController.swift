@@ -26,7 +26,7 @@ class MainViewController: UIViewController {
         tableView.delegate = self
         tableView.isHidden = true
         tableView.separatorStyle = .none
-        tableView.register(UINib(nibName: String(describing: CharacterTableViewCell.self), bundle: nil), forCellReuseIdentifier: CharacterTableViewCell.reuseId)
+        tableView.register(UINib(nibName: String(describing: CharacterTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: CharacterTableViewCell.self))
         
         searchBar.delegate = self
         
@@ -49,10 +49,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.reuseId) as? CharacterTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CharacterTableViewCell.self)) as? CharacterTableViewCell
             else { fatalError("Fatal error") }
         let character = characters[indexPath.row]
-        cell.configure(name: character.name, thumbnail: character.thumbnail)
+        let cellState = CharacterTableViewCell.State(name: character.name, thumbnail: character.thumbnail)
+        cell.configure(with: cellState)
         return cell
     }
     
@@ -71,20 +72,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: searchBar section
 extension MainViewController: UISearchBarDelegate {
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-//        if let searchText = searchBar.text {
-//            if searchText != "" {
-//                downloadCharacters(startsWith: searchText) { characters in
-//                    self.characters = characters
-//                    self.tableView.reloadData()
-//                    self.tableView.isHidden = false
-//                }
-//            } else {
-//                tableView.isHidden = true
-//            }
-//        }
-    }
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchText = searchBar.text {
             if searchText != "" {
@@ -108,6 +95,34 @@ extension MainViewController: UISearchBarDelegate {
                 tableView.isHidden = true
             }
         }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(UIWebView.reload), object: nil)
+        self.perform(#selector(UIWebView.reload), with: nil, afterDelay: 0.5)
+        
+//        if let searchText = searchBar.text {
+//            if searchText != "" {
+//                spinner.startAnimating()
+//                MarvelAPI.downloadCharacters(startsWith: searchText) { optCharacters in
+//                    guard let characters = optCharacters else{
+//                        self.hideTableWith(text: "Oops! Some problems with internet connection")
+//                        return
+//                    }
+//                    if characters.isEmpty{
+//                        self.hideTableWith(text: "Sorry. There are no characters starts like \"\(searchText)\"")
+//                        return
+//                    }
+//                    self.characters = characters
+//                    self.tableView.reloadData()
+//                    self.tableView.isHidden = false
+//                    self.spinner.stopAnimating()
+//                }
+//            } else {
+//                statusLabel.text = "Start typing"
+//                tableView.isHidden = true
+//            }
+//        }
     }
     
     func hideTableWith(text: String) {

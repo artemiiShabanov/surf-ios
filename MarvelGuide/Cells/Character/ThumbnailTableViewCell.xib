@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="254" id="KGk-i7-Jjw" customClass="ThumbnailTableViewCell" customModule="MarvelGuide" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="250" height="249.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mqi-dG-3h2">
+                        <rect key="frame" x="46" y="41" width="158" height="158"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="mqi-dG-3h2" secondAttribute="height" multiplier="1:1" id="moI-WE-Zvc"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="mqi-dG-3h2" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="3Pv-kV-5Ta"/>
+                    <constraint firstItem="mqi-dG-3h2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="30" id="5Hz-QQ-RTr"/>
+                    <constraint firstItem="mqi-dG-3h2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="30" id="CF3-bQ-cjy"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="mqi-dG-3h2" secondAttribute="trailing" constant="30" id="Sc3-Pl-Oyj"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="mqi-dG-3h2" secondAttribute="bottom" constant="30" id="TI7-mx-2oU"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" name="marvel-red"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="thumbnailImageView" destination="mqi-dG-3h2" id="Dk4-lv-zp3"/>
+            </connections>
+            <point key="canvasLocation" x="76.5" y="157"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="marvel-red">
+            <color red="0.9137254901960784" green="0.0" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
