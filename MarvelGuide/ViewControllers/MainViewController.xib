@@ -72,8 +72,5 @@
         <namedColor name="marvel-red">
             <color red="0.91372549020000005" green="0.0" blue="0.094117647060000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="marvel-red">
-            <color red="0.9137254901960784" green="0.0" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>
