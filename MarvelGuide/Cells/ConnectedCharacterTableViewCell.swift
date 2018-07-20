@@ -1,21 +1,27 @@
 //
-//  CharacterTableViewCell.swift
+//  ConnectedCharacterTableViewCell.swift
 //  MarvelGuide
 //
-//  Created by Artemii Shabanov on 18.07.2018.
+//  Created by Artemii Shabanov on 20.07.2018.
 //  Copyright © 2018 Artemii Shabanov. All rights reserved.
 //
 
 import UIKit
 
-class CharacterTableViewCell: UITableViewCell {
+class ConnectedCharacterTableViewCell: UITableViewCell {
 
-    @IBOutlet fileprivate weak var thumbnailImageView: UIImageView!
-    @IBOutlet fileprivate weak var nameLabel: UILabel!
-    public static let reuseId = "CharacterTableViewCell_reuseId"
+    struct State {
+        
+    }
     
-    public func configure(name: String, thumbnail: (path: String, ext: String)) {
+    @IBOutlet fileprivate weak var thumbnailImageView: UIImageView!
+    @IBOutlet fileprivate weak var eventLabel: UILabel!
+    @IBOutlet fileprivate weak var nameLabel: UILabel!
+    public static let reuseId = "ConnectedCharacterTableViewCell_reuseId"
+    
+    public func configure(name: String, thumbnail: (path: String, ext: String), event: String) {
         nameLabel.text = name
+        eventLabel.text = event
         if thumbnail.path.hasSuffix("image_not_available") {
             thumbnailImageView.image = #imageLiteral(resourceName: "question")
         } else {
@@ -25,6 +31,17 @@ class CharacterTableViewCell: UITableViewCell {
         thumbnailImageView.clipsToBounds = true
         thumbnailImageView.layer.borderWidth = 1
         thumbnailImageView.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
     
 }

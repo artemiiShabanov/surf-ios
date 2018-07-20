@@ -25,8 +25,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start typing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCQ-Ij-HWw">
-                    <rect key="frame" x="143" y="361" width="89" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start typing" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCQ-Ij-HWw">
+                    <rect key="frame" x="30" y="361.5" width="315" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -51,10 +51,12 @@
             </subviews>
             <color key="backgroundColor" name="marvel-red"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="eCQ-Ij-HWw" secondAttribute="trailing" constant="30" id="4Mo-7o-QMf"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SGQ-oV-yxE" secondAttribute="trailing" constant="40" id="7YD-mZ-CVU"/>
                 <constraint firstItem="ekX-Ic-jKj" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="7ca-Ie-Bk2"/>
                 <constraint firstItem="SGQ-oV-yxE" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="18" id="7qa-tu-Wt5"/>
                 <constraint firstItem="eCQ-Ij-HWw" firstAttribute="centerY" secondItem="jqk-dm-Eer" secondAttribute="centerY" id="DYw-0L-5PM"/>
+                <constraint firstItem="eCQ-Ij-HWw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="Ekc-hl-4vZ"/>
                 <constraint firstItem="eCQ-Ij-HWw" firstAttribute="centerX" secondItem="jqk-dm-Eer" secondAttribute="centerX" id="Ir3-ed-jZf"/>
                 <constraint firstItem="ekX-Ic-jKj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Ld6-bG-Fvm"/>
                 <constraint firstItem="ekX-Ic-jKj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Mcn-xk-pwg"/>

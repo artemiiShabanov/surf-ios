@@ -19,14 +19,14 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationItem.title = "Characters"
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationItem.title = "Characters"
         
         tableView.dataSource = self
         tableView.delegate = self
         tableView.isHidden = true
         tableView.separatorStyle = .none
-        tableView.register(UINib(nibName: "CharacterTableViewCell", bundle: nil), forCellReuseIdentifier: CharacterTableViewCell.reuseId)
+        tableView.register(UINib(nibName: String(describing: CharacterTableViewCell.self), bundle: nil), forCellReuseIdentifier: CharacterTableViewCell.reuseId)
         
         searchBar.delegate = self
         
@@ -57,16 +57,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        //adding word to realm
-        //        let word = Word()
-        //        word.word = filteredWords[indexPath.row]
-        //        word.definition = dict[word.word]
-        //        if !alreadyHaveWords.contains(word.word) {
-        //            try? realm.write {
-        //                realm.add(word)
-        //            }
-        //            self.dismiss(animated: true, completion: nil)
-        //        }
+        let cvc = CharacterViewController(nibName: "CharacterViewController", bundle: nil)
+        cvc.character = characters[indexPath.row]
+        navigationController?.pushViewController(cvc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -96,17 +89,13 @@ extension MainViewController: UISearchBarDelegate {
         if let searchText = searchBar.text {
             if searchText != "" {
                 spinner.startAnimating()
-                downloadCharacters(startsWith: searchText) { optCharacters in
+                MarvelAPI.downloadCharacters(startsWith: searchText) { optCharacters in
                     guard let characters = optCharacters else{
-                        self.tableView.isHidden = true
-                        self.statusLabel.text = "Oops! Some problems with internet connection"
-                        self.spinner.stopAnimating()
+                        self.hideTableWith(text: "Oops! Some problems with internet connection")
                         return
                     }
                     if characters.isEmpty{
-                        self.tableView.isHidden = true
-                        self.statusLabel.text = "Sorry. There are no characters starts like \"\(searchText)\""
-                        self.spinner.stopAnimating()
+                        self.hideTableWith(text: "Sorry. There are no characters starts like \"\(searchText)\"")
                         return
                     }
                     self.characters = characters
@@ -121,10 +110,25 @@ extension MainViewController: UISearchBarDelegate {
         }
     }
     
-    //    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    //        downloadCharacters(startsWith: searchText) {characters1 in
-    //            self.characters = characters1
-    //            self.tableView.reloadData()
-    //        }
-    //    }
+    func hideTableWith(text: String) {
+        self.tableView.isHidden = true
+        self.statusLabel.text = text
+        self.spinner.stopAnimating()
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
