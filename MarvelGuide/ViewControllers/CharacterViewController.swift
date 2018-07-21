@@ -123,5 +123,20 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.5) {
+            if let cell = collectionView.cellForItem(at: indexPath) as? ConnectedCharacterCollectionViewCell {
+                cell.animateIn()
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.5) {
+            if let cell = collectionView.cellForItem(at: indexPath) as? ConnectedCharacterCollectionViewCell {
+                cell.animateOut()
+            }
+        }
+    }
     
 }

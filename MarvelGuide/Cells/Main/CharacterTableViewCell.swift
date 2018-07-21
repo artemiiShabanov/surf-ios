@@ -28,4 +28,12 @@ class CharacterTableViewCell: UITableViewCell {
         thumbnailImageView.makeRound()
     }
     
+    public func animateIn() {
+        thumbnailImageView.transform = .init(scaleX: 0.95, y: 0.95)
+    }
+    
+    public func animateOut() {
+        thumbnailImageView.transform = .identity
+    }
+    
 }

@@ -35,6 +35,17 @@ class ConnectedCharacterCollectionViewCell: UICollectionViewCell {
         } else {
             thumbnailImageView.download(image: state.thumbnail.path.secureURL() + "." + state.thumbnail.ext)
         }
-        thumbnailImageView.makeRound()    }
+        thumbnailImageView.makeRound()
+    }
+    
+    public func animateIn() {
+        thumbnailImageView.transform = .init(scaleX: 0.95, y: 0.95)
+        self.layer.borderColor = UIColor.yellow.cgColor
+    }
+    
+    public func animateOut() {
+        thumbnailImageView.transform = .identity
+        self.layer.borderColor = UIColor.white.cgColor
+    }
     
 }
