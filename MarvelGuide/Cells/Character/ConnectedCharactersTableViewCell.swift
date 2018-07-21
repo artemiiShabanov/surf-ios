@@ -16,8 +16,9 @@ class ConnectedCharactersTableViewCell: UITableViewCell {
         collectionView.delegate = view
         collectionView.dataSource = view
         
-        collectionView.register(ConnectedCharacterCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: ConnectedCharacterCollectionViewCell.self))
+        collectionView.register(UINib(nibName: String(describing: ConnectedCharacterCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: ConnectedCharacterCollectionViewCell.self))
         
+        print(collectionView.numberOfSections)
         collectionView.reloadData()
     }
     

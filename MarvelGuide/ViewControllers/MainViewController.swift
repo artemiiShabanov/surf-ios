@@ -72,30 +72,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: searchBar section
 extension MainViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let searchText = searchBar.text {
-            if searchText != "" {
-                spinner.startAnimating()
-                MarvelAPI.downloadCharacters(startsWith: searchText) { optCharacters in
-                    guard let characters = optCharacters else{
-                        self.hideTableWith(text: "Oops! Some problems with internet connection")
-                        return
-                    }
-                    if characters.isEmpty{
-                        self.hideTableWith(text: "Sorry. There are no characters starts like \"\(searchText)\"")
-                        return
-                    }
-                    self.characters = characters
-                    self.tableView.reloadData()
-                    self.tableView.isHidden = false
-                    self.spinner.stopAnimating()
-                }
-            } else {
-                statusLabel.text = "Start typing"
-                tableView.isHidden = true
-            }
-        }
-    }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         //throttling magic

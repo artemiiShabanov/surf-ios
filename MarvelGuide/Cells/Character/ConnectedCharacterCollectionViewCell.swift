@@ -20,6 +20,13 @@ class ConnectedCharacterCollectionViewCell: UICollectionViewCell {
     @IBOutlet fileprivate weak var eventLabel: UILabel!
     @IBOutlet fileprivate weak var thumbnailImageView: UIImageView!
     
+    override func awakeFromNib() {
+        
+        self.layer.cornerRadius = 10
+        self.layer.borderColor = UIColor.white.cgColor
+        self.layer.borderWidth = 1
+    }
+    
     public func configure(with state: State) {
         nameLabel.text = state.name
         eventLabel.text = state.event
@@ -28,7 +35,6 @@ class ConnectedCharacterCollectionViewCell: UICollectionViewCell {
         } else {
             thumbnailImageView.download(image: state.thumbnail.path.secureURL() + "." + state.thumbnail.ext)
         }
-        thumbnailImageView.makeRound()
-    }
+        thumbnailImageView.makeRound()    }
     
 }

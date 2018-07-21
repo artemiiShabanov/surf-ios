@@ -28,7 +28,7 @@ class CharacterViewController: UIViewController {
             self.charactersCell?.reloadData()
         }
         
-        connectedCharacters = [(character: character, event: "aaa"), (character: character, event: "aaa"),(character: character, event: "aaa"), (character: character, event: "aaa")] as! [(character: MarvelCharacter, event: String)]
+//        connectedCharacters = [(character: character, event: "aaa"), (character: character, event: "aaa"),(character: character, event: "aaa"), (character: character, event: "aaa")] as! [(character: MarvelCharacter, event: String)]
         
         navigationItem.title = character?.name
         
@@ -112,6 +112,10 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.configure(with: state)
         return cell
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        <#code#>
+//    }
     
     
 }
