@@ -18,11 +18,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="marvel-bg" translatesAutoresizingMaskIntoConstraints="NO" id="Cs1-TL-E3k">
-                                <rect key="frame" x="0.0" y="10" width="375" height="667"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="marvel-bg" translatesAutoresizingMaskIntoConstraints="NO" id="Cs1-TL-E3k">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data provided by Marvel. © 2014 Marvel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oak-qq-WOF">
-                                <rect key="frame" x="20" y="620" width="335" height="17"/>
+                                <rect key="frame" x="57" y="325" width="260" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -30,13 +30,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Cs1-TL-E3k" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="204-0g-qD0"/>
-                            <constraint firstItem="Oak-qq-WOF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="C3o-aj-W3x"/>
-                            <constraint firstAttribute="trailing" secondItem="Oak-qq-WOF" secondAttribute="trailing" constant="20" id="Fjj-Sm-yj5"/>
-                            <constraint firstItem="Cs1-TL-E3k" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ODT-mG-HiZ"/>
-                            <constraint firstItem="Cs1-TL-E3k" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="bZV-Zq-mF2"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Oak-qq-WOF" secondAttribute="bottom" constant="30" id="l2S-tt-k9g"/>
-                            <constraint firstItem="Cs1-TL-E3k" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="y72-wF-XZc"/>
+                            <constraint firstItem="Cs1-TL-E3k" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0r3-EU-wXq"/>
+                            <constraint firstItem="Cs1-TL-E3k" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="FXR-YC-hrW"/>
+                            <constraint firstItem="Oak-qq-WOF" firstAttribute="centerX" secondItem="Cs1-TL-E3k" secondAttribute="centerX" id="WPK-hL-wma"/>
+                            <constraint firstItem="Cs1-TL-E3k" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fzB-XP-eQi"/>
+                            <constraint firstItem="Cs1-TL-E3k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xa9-aj-88e"/>
+                            <constraint firstItem="Oak-qq-WOF" firstAttribute="centerY" secondItem="Cs1-TL-E3k" secondAttribute="centerY" id="z9k-TU-bgJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
