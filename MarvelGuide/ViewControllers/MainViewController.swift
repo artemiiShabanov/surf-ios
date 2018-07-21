@@ -91,6 +91,10 @@ extension MainViewController: UISearchBarDelegate {
         self.perform(#selector(MainViewController.onSearch), with: nil, afterDelay: 0.5)
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
+    }
+    
     @objc func onSearch() {
         if let searchText = searchBar.text {
             if searchText != "" {
