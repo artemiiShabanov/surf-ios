@@ -48,8 +48,8 @@ struct MarvelAPI {
         }
     }
     
-    
-    static func downloadByOneCharactersConnected(with character: MarvelCharacter, completion: @escaping ((character: MarvelCharacter, event: String)) -> Void) {
+    //calls completion with nil when outer request is finished
+    static func downloadByOneCharactersConnected(with character: MarvelCharacter, completion: @escaping ((character: MarvelCharacter, event: String)?) -> Void) {
         
         //First getting events for character Id
         let url = NetworkConstants.baseURL + "/characters/\(character.id)/events"
@@ -62,7 +62,6 @@ struct MarvelAPI {
         ]
         
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
-            
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -75,6 +74,7 @@ struct MarvelAPI {
                         if i == 0 { break }
                     }
                 }
+                completion(nil)
                 
             case .failure(let error):
                 print(error)

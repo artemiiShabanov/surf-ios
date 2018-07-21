@@ -12,7 +12,6 @@ class CharacterViewController: UIViewController {
 
     public var character: MarvelCharacter?
     private var connectedCharacters = [(character: MarvelCharacter, event: String)]()
-    private var cv: UICollectionView?
     private var charactersCell: ConnectedCharactersTableViewCell?
     
     @IBOutlet fileprivate weak var tableView: UITableView!
@@ -23,18 +22,24 @@ class CharacterViewController: UIViewController {
         tableView.dataSource = self
         registerCells()
         
-        MarvelAPI.downloadByOneCharactersConnected(with: character!) { characterEventPair in
-            guard characterEventPair.character.id != self.character?.id else {
-                return
-            }
-            self.connectedCharacters.append(characterEventPair)
-            self.charactersCell?.reloadData()
-        }
-        
-//        connectedCharacters = [(character: character, event: "aaa"), (character: character, event: "aaa"),(character: character, event: "aaa"), (character: character, event: "aaa")] as! [(character: MarvelCharacter, event: String)]
-        
         navigationItem.title = character?.name
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        charactersCell?.startLoadAnimating()
+        MarvelAPI.downloadByOneCharactersConnected(with: character!) { characterEventPair in
+            guard let characterEventPairNotNil = characterEventPair else {
+                self.charactersCell?.stopLoadAnimating()
+                return
+            }
+            guard characterEventPairNotNil.character.id != self.character?.id else {
+                return
+            }
+            self.connectedCharacters.append(characterEventPairNotNil)
+            self.charactersCell?.reloadData()
+        }
     }
     
     func registerCells() {
@@ -120,7 +125,7 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
         let cvc = CharacterViewController(nibName: "CharacterViewController", bundle: nil)
         cvc.character = connectedCharacters[indexPath.row].character
         navigationController?.pushViewController(cvc, animated: true)
-        tableView.deselectRow(at: indexPath, animated: true)
+        collectionView.deselectItem(at: indexPath, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
