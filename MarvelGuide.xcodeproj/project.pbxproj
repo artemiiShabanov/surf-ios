@@ -102,11 +102,11 @@
 		A416119A20FCC60A0075326A /* MarvelGuide */ = {
 			isa = PBXGroup;
 			children = (
+				A43A06E42103490D00A96D6C /* Model */,
 				A4353A9620FFC3EC00A3755B /* ViewControllers */,
 				A4353A9320FF941900A3755B /* Helpers */,
 				A4353A7D20FE5B6300A3755B /* Network */,
 				A4353A8820FF82CA00A3755B /* Cells */,
-				A4353A8620FF5F1500A3755B /* MarvelCharacter.swift */,
 				A416119B20FCC60A0075326A /* AppDelegate.swift */,
 				A41611A220FCC60B0075326A /* Assets.xcassets */,
 				A41611A420FCC60B0075326A /* LaunchScreen.storyboard */,
@@ -174,6 +174,14 @@
 				A4353AB021021B8F00A3755B /* ConnectedCharacterCollectionViewCell.xib */,
 			);
 			path = Character;
+			sourceTree = "<group>";
+		};
+		A43A06E42103490D00A96D6C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A4353A8620FF5F1500A3755B /* MarvelCharacter.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		C968A7662CE0DEC6FC6B40D7 /* Frameworks */ = {

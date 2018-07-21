@@ -24,6 +24,9 @@ class CharacterViewController: UIViewController {
         registerCells()
         
         MarvelAPI.downloadByOneCharactersConnected(with: character!) { characterEventPair in
+            guard characterEventPair.character.id != self.character?.id else {
+                return
+            }
             self.connectedCharacters.append(characterEventPair)
             self.charactersCell?.reloadData()
         }
@@ -113,9 +116,12 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cvc = CharacterViewController(nibName: "CharacterViewController", bundle: nil)
+        cvc.character = connectedCharacters[indexPath.row].character
+        navigationController?.pushViewController(cvc, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
     
 }

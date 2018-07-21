@@ -18,7 +18,6 @@ class ConnectedCharactersTableViewCell: UITableViewCell {
         
         collectionView.register(UINib(nibName: String(describing: ConnectedCharacterCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: ConnectedCharacterCollectionViewCell.self))
         
-        print(collectionView.numberOfSections)
         collectionView.reloadData()
     }
     
