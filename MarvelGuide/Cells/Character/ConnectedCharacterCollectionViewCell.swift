@@ -21,7 +21,6 @@ class ConnectedCharacterCollectionViewCell: UICollectionViewCell {
     @IBOutlet fileprivate weak var thumbnailImageView: UIImageView!
     
     override func awakeFromNib() {
-        
         self.layer.cornerRadius = 10
         self.layer.borderColor = UIColor.white.cgColor
         self.layer.borderWidth = 1

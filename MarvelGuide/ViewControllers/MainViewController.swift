@@ -16,6 +16,8 @@ class MainViewController: UIViewController {
     @IBOutlet fileprivate weak var tableView: UITableView!
     private var characters = [MarvelCharacter]()
     
+    private var lastRequestId = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,7 +101,13 @@ extension MainViewController: UISearchBarDelegate {
         if let searchText = searchBar.text {
             if searchText != "" {
                 spinner.startAnimating()
+                lastRequestId += 1
+                let requestId = lastRequestId
                 MarvelAPI.downloadCharacters(startsWith: searchText) { optCharacters in
+                    if requestId != self.lastRequestId {
+                        print("ep")
+                        return
+                    }
                     guard let characters = optCharacters else{
                         self.hideTableWith(text: "Oops! Some problems with internet connection")
                         return

@@ -15,10 +15,6 @@ class CharacterTableViewCell: UITableViewCell {
         let thumbnail: (path: String, ext: String)
     }
     
-    override func awakeFromNib() {
-        self.selectionStyle = .gray
-    }
-    
     @IBOutlet fileprivate weak var thumbnailImageView: UIImageView!
     @IBOutlet fileprivate weak var nameLabel: UILabel!
     
@@ -34,13 +30,10 @@ class CharacterTableViewCell: UITableViewCell {
     
     public func animateIn() {
         thumbnailImageView.transform = .init(scaleX: 0.95, y: 0.95)
-        
-        
     }
     
     public func animateOut() {
         thumbnailImageView.transform = .identity
-        self.backgroundColor = UIColor(named: "marvel-red")
     }
     
 }
