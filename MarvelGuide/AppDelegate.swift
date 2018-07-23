@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearace.prefersLargeTitles = true
         
         window = UIWindow(frame: UIScreen.main.bounds)
+        window?.backgroundColor = UIColor(named: "marvel-red")
         let navigationController = UINavigationController()
         let mainViewController = MainViewController()
         navigationController.setViewControllers([mainViewController], animated: false)
