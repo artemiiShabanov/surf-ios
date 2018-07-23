@@ -98,6 +98,7 @@ extension MainViewController: UISearchBarDelegate {
     }
     
     @objc func onSearch() {
+        tableView.setContentOffset(.zero, animated: true)
         if let searchText = searchBar.text {
             if searchText != "" {
                 spinner.startAnimating()
@@ -135,6 +136,7 @@ extension MainViewController: UISearchBarDelegate {
     }
 }
 
+//MARK:- scroll view section
 extension MainViewController: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.view.endEditing(true)

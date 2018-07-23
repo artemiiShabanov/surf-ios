@@ -23,11 +23,6 @@ class CharacterViewController: UIViewController {
         registerCells()
         
         navigationItem.title = character?.name
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
         charactersCell?.startLoadAnimating()
         MarvelAPI.downloadByOneCharactersConnected(with: character!) { characterEventPair in
             guard let characterEventPairNotNil = characterEventPair else {

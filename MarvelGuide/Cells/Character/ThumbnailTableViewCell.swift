@@ -25,3 +25,4 @@ class ThumbnailTableViewCell: UITableViewCell {
         thumbnailImageView.makeRound()
     }
 }
+

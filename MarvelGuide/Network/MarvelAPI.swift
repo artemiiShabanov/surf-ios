@@ -38,7 +38,9 @@ struct MarvelAPI {
                         characters.append(MarvelCharacter(id: id, name: name, description: disc == "" ? nil : disc, thumbnail: (path, ext)))
                     }
                 }
-                completion(characters)
+                DispatchQueue.main.async {
+                    completion(characters)
+                }
                 
             case .failure(let error):
                 print(error)
