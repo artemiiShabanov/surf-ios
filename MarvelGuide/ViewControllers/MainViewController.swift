@@ -135,7 +135,11 @@ extension MainViewController: UISearchBarDelegate {
     }
 }
 
-
+extension MainViewController: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.view.endEditing(true)
+    }
+}
 
 
 
