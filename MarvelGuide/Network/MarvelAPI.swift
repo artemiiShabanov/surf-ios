@@ -67,8 +67,11 @@ struct MarvelAPI {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                //print(json)
-                for (_, subjson) in json["data"]["results"] {
+                let events = json["data"]["results"]
+                if events.isEmpty {
+                    completion((MarvelCharacter(id: 0, name: "", description: nil, thumbnail: ("", "")), ""))
+                }
+                for (_, subjson) in events {
                     var i = 5
                     for (_, subSubjson) in subjson["characters"]["items"] {
                         downloadCharacterBy(uri: subSubjson["resourceURI"].stringValue, with: subjson["title"].stringValue, completion: completion)
@@ -81,7 +84,6 @@ struct MarvelAPI {
             case .failure(let error):
                 print(error)
             }
-            
         }
     }
     

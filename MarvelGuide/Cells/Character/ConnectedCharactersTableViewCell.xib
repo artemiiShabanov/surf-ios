@@ -44,23 +44,15 @@
                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="ubR-VA-iez">
                         <rect key="frame" x="383" y="16" width="20" height="30"/>
                     </activityIndicatorView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This character is lonely(((" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74a-fV-N99">
-                        <rect key="frame" x="49" y="114" width="195" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <color key="backgroundColor" name="marvel-red"/>
                 <constraints>
                     <constraint firstItem="w7A-46-IY6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="3Mm-v4-by4"/>
-                    <constraint firstItem="74a-fV-N99" firstAttribute="centerY" secondItem="6ll-cH-Uck" secondAttribute="centerY" id="4lf-SZ-HpU"/>
                     <constraint firstAttribute="bottomMargin" secondItem="6ll-cH-Uck" secondAttribute="bottom" id="IRB-1S-17J"/>
                     <constraint firstItem="w7A-46-IY6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="Iy3-4l-rm3"/>
                     <constraint firstAttribute="trailingMargin" secondItem="w7A-46-IY6" secondAttribute="trailing" constant="10" id="Ucq-9E-WBC"/>
                     <constraint firstAttribute="trailingMargin" secondItem="ubR-VA-iez" secondAttribute="trailing" constant="10" id="jez-B1-Onc"/>
                     <constraint firstItem="6ll-cH-Uck" firstAttribute="top" secondItem="ubR-VA-iez" secondAttribute="bottom" constant="3" id="loC-FQ-47G"/>
-                    <constraint firstItem="74a-fV-N99" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="29" id="pAu-wH-16C"/>
                     <constraint firstItem="6ll-cH-Uck" firstAttribute="top" secondItem="w7A-46-IY6" secondAttribute="bottom" constant="4" id="xif-Ij-Ap6"/>
                     <constraint firstItem="ubR-VA-iez" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="y2r-Ce-52r"/>
                 </constraints>
@@ -72,8 +64,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="collectionView" destination="6ll-cH-Uck" id="R5o-Pm-vX4"/>
-                <outlet property="isLonelyLabel" destination="74a-fV-N99" id="dwU-mS-bcj"/>
                 <outlet property="spinner" destination="ubR-VA-iez" id="ENx-D8-IWf"/>
+                <outlet property="titleLabel" destination="w7A-46-IY6" id="CRo-07-n1i"/>
             </connections>
             <point key="canvasLocation" x="90.5" y="127.5"/>
         </tableViewCell>

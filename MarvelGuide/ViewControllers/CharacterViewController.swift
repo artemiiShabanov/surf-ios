@@ -23,10 +23,14 @@ class CharacterViewController: UIViewController {
         registerCells()
         
         navigationItem.title = character?.name
-        charactersCell?.startLoadAnimating()
+        
         MarvelAPI.downloadByOneCharactersConnected(with: character!) { characterEventPair in
             guard let characterEventPairNotNil = characterEventPair else {
                 self.charactersCell?.stopLoadAnimating()
+                return
+            }
+            if characterEventPairNotNil.event == "" {
+                self.charactersCell?.reloadDataForEmptyState()
                 return
             }
             guard characterEventPairNotNil.character.id != self.character?.id else {
@@ -35,6 +39,7 @@ class CharacterViewController: UIViewController {
             self.connectedCharacters.append(characterEventPairNotNil)
             self.charactersCell?.reloadData()
         }
+            
     }
     
     func registerCells() {

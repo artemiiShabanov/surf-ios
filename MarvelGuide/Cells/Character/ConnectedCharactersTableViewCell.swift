@@ -10,12 +10,12 @@ import UIKit
 
 class ConnectedCharactersTableViewCell: UITableViewCell {
 
-    @IBOutlet fileprivate weak var isLonelyLabel: UILabel!
+    @IBOutlet fileprivate weak var titleLabel: UILabel!
     @IBOutlet fileprivate weak var spinner: UIActivityIndicatorView!
     @IBOutlet fileprivate weak var collectionView: UICollectionView!
     
     override func awakeFromNib() {
-        isLonelyLabel.isHidden = true
+        startLoadAnimating()
     }
     
     func setDelegateAndDataSourse(view: CharacterViewController) {
@@ -29,16 +29,17 @@ class ConnectedCharactersTableViewCell: UITableViewCell {
         collectionView.reloadData()
     }
     
+    func reloadDataForEmptyState() {
+        collectionView.frame = CGRect(x:0, y: 0, width:0, height:0)
+        titleLabel.text = "No connected characters"
+    }
+    
     func startLoadAnimating() {
-        isLonelyLabel.isHidden = true
         spinner.startAnimating()
     }
     
     func stopLoadAnimating() {
         spinner.stopAnimating()
-//        if collectionView.numberOfItems(inSection: 0) == 0 {
-//            isLonelyLabel.isHidden = false
-//        }
     }
 }
 
