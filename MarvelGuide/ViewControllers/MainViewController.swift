@@ -136,8 +136,6 @@ extension MainViewController: UISearchBarDelegate {
     }
 }
 
-//MARK:- scroll view section
-
 
 
 

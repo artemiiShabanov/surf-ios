@@ -29,9 +29,9 @@ class ConnectedCharactersTableViewCell: UITableViewCell {
         collectionView.reloadData()
     }
     
-    func reloadDataForEmptyState() {
-        collectionView.frame = CGRect(x:0, y: 0, width:0, height:0)
-        titleLabel.text = "No connected characters"
+    func cleanData(with text: String) {
+        titleLabel.text = text
+        collectionView.frame.size.height = 0
     }
     
     func startLoadAnimating() {

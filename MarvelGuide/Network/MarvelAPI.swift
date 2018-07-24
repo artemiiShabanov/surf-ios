@@ -42,8 +42,7 @@ struct MarvelAPI {
                     completion(characters)
                 }
                 
-            case .failure(let error):
-                print(error)
+            case .failure(_):
                 completion(nil)
             }
             
@@ -52,7 +51,7 @@ struct MarvelAPI {
     
     //TODO: array result + 2nd complition
     //calls completion with nil when outer request is finished
-    static func downloadByOneCharactersConnected(with character: MarvelCharacter, completion: @escaping ((character: MarvelCharacter, event: String)?) -> Void) {
+    static func downloadByOneCharactersConnected(with character: MarvelCharacter, completion: @escaping ( [(character: MarvelCharacter, event: String)]? ) -> Void) {
         
         //First getting events for character Id
         let url = NetworkConstants.baseURL + "/characters/\(character.id)/events"
@@ -64,31 +63,36 @@ struct MarvelAPI {
             "hash": "\(ts)\(NetworkConstants.privateKey)\(NetworkConstants.publicKey)".md5()
         ]
         
+        var resultCharacters = [(character: MarvelCharacter, event: String)]()
+        
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                let events = json["data"]["results"]
+                let events = json["data"]["results"].prefix(5)
                 if events.isEmpty {
-                    completion((MarvelCharacter(id: 0, name: "", description: nil, thumbnail: ("", "")), ""))
+                    completion(resultCharacters)
+                    return
                 }
-                for (_, subjson) in events {
-                    var i = 5
-                    for (_, subSubjson) in subjson["characters"]["items"] {
-                        downloadCharacterBy(uri: subSubjson["resourceURI"].stringValue, with: subjson["title"].stringValue, completion: completion)
-                        i -= 1
-                        if i == 0 { break }
+                for (i, subjson) in events {
+                    let characters = subjson["characters"]["items"].prefix(5)
+                    for (j, subSubjson) in characters {
+                        downloadCharacterBy(uri: subSubjson["resourceURI"].stringValue) { character in
+                            resultCharacters.append((character: character, event: subjson["title"].stringValue))
+                            if (Int(i) == events.count - 1) && (Int(j) == characters.count - 1) {
+                                completion(resultCharacters)
+                            }
+                        }
                     }
                 }
-                completion(nil)
                 
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                completion(nil)
             }
         }
     }
     
-    static private func downloadCharacterBy(uri: String, with event: String, completion: @escaping ((character: MarvelCharacter, event: String)) -> Void) {
+    static private func downloadCharacterBy(uri: String, completion: @escaping (MarvelCharacter) -> Void) {
         let ts = Date().toMillisString()
         let parameters: Parameters = [
             "ts": ts,
@@ -105,7 +109,7 @@ struct MarvelAPI {
                 for (_, subjson) in json["data"]["results"] {
                     let thumbnail = subjson["thumbnail"]
                     if let id = subjson["id"].int, let name = subjson["name"].string, let disc = subjson["description"].string, let path = thumbnail["path"].string, let ext = thumbnail["extension"].string {
-                        completion((MarvelCharacter(id: id, name: name, description: disc == "" ? nil : disc, thumbnail: (path, ext)), event))
+                        completion(MarvelCharacter(id: id, name: name, description: disc == "" ? nil : disc, thumbnail: (path, ext)))
                     }
                 }
             case .failure(let error):

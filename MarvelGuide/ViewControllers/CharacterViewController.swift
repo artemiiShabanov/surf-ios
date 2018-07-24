@@ -24,20 +24,22 @@ class CharacterViewController: UIViewController {
         
         navigationItem.title = character?.name
         
-        MarvelAPI.downloadByOneCharactersConnected(with: character!) { characterEventPair in
-            guard let characterEventPairNotNil = characterEventPair else {
+        MarvelAPI.downloadByOneCharactersConnected(with: character!) { characterEventPairs in
+            guard let characterEventPairsNotNil = characterEventPairs else {
+                self.charactersCell?.cleanData(with: "Fail during characters loading")
                 self.charactersCell?.stopLoadAnimating()
                 return
             }
-            if characterEventPairNotNil.event == "" {
-                self.charactersCell?.reloadDataForEmptyState()
+            guard characterEventPairsNotNil.count != 0 else{
+                self.charactersCell?.cleanData(with: "No connected characters")
+                self.charactersCell?.stopLoadAnimating()
                 return
             }
-            guard characterEventPairNotNil.character.id != self.character?.id else {
-                return
+            self.connectedCharacters = characterEventPairsNotNil.filter {
+                $0.character.id != self.character?.id
             }
-            self.connectedCharacters.append(characterEventPairNotNil)
             self.charactersCell?.reloadData()
+            self.charactersCell?.stopLoadAnimating()
         }
             
     }
