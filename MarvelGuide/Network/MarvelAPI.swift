@@ -50,6 +50,7 @@ struct MarvelAPI {
         }
     }
     
+    //TODO: array result + 2nd complition
     //calls completion with nil when outer request is finished
     static func downloadByOneCharactersConnected(with character: MarvelCharacter, completion: @escaping ((character: MarvelCharacter, event: String)?) -> Void) {
         

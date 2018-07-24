@@ -29,6 +29,7 @@
 		A4353AAE2102150F00A3755B /* ConnectedCharactersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4353AAC2102150F00A3755B /* ConnectedCharactersTableViewCell.xib */; };
 		A4353AB121021B8F00A3755B /* ConnectedCharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4353AAF21021B8F00A3755B /* ConnectedCharacterCollectionViewCell.swift */; };
 		A4353AB221021B8F00A3755B /* ConnectedCharacterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4353AB021021B8F00A3755B /* ConnectedCharacterCollectionViewCell.xib */; };
+		A4691292210721BD0049006B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A41611A720FCC60B0075326A /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -260,6 +261,7 @@
 				A4353AAA210214E700A3755B /* DescriptionTableViewCell.xib in Resources */,
 				A4353AA6210214D200A3755B /* ThumbnailTableViewCell.xib in Resources */,
 				A4353A9A20FFC72F00A3755B /* MainViewController.xib in Resources */,
+				A4691292210721BD0049006B /* Info.plist in Resources */,
 				A4353A8C20FF830300A3755B /* CharacterTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
