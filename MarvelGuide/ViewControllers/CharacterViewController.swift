@@ -75,6 +75,7 @@ extension CharacterViewController: UITableViewDelegate, UITableViewDataSource {
             case 1:
                 if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DescriptionTableViewCell.self)) as? DescriptionTableViewCell {
                     if let description = characterNotNil.description {
+                        print("?" + description + "?")
                         let state = DescriptionTableViewCell.State(description: description)
                         cell.configure(with: state)
                         return cell

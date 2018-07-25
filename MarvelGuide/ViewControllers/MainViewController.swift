@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
     @IBOutlet fileprivate weak var searchBar: UISearchBar!
     @IBOutlet fileprivate weak var tableView: UITableView!
     private var characters = [MarvelCharacter]()
+    public var initialCharacter: MarvelCharacter?
     
     private var lastRequestId = 0
     
@@ -33,6 +34,16 @@ class MainViewController: UIViewController {
         searchBar.delegate = self
         
         spinner.stopAnimating()
+        
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //if app is launched throw link with character id
+        if let character = initialCharacter {
+            initialCharacter = nil
+            push(with: character)
+        }
     }
     
 }
@@ -60,9 +71,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cvc = CharacterViewController(nibName: "CharacterViewController", bundle: nil)
-        cvc.character = characters[indexPath.row]
-        navigationController?.pushViewController(cvc, animated: true)
+        push(with: characters[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -81,6 +90,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.cellForRow(at: indexPath) as?  CharacterTableViewCell {
             cell.animateOut()
         }
+    }
+    
+    func push(with character: MarvelCharacter) {
+        let cvc = CharacterViewController(nibName: "CharacterViewController", bundle: nil)
+        cvc.character = character
+        navigationController?.pushViewController(cvc, animated: true)
     }
 }
 
