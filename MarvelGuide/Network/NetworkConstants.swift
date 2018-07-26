@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct NetworkConstants {
+enum NetworkConstants {
     static let baseURL = "https://gateway.marvel.com:443/v1/public"
     static let publicKey = "7121ac3e0c7f882ecd654b4a51d63696"
     static let privateKey = "daf1b8f2cf2653fda9f35a1a94bc578e9dd02bc0"

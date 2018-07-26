@@ -13,6 +13,11 @@ import CryptoSwift
 
 struct MarvelAPI {
     
+    static func downloadCharacterBy(id: Int, completion: @escaping (MarvelCharacter?) -> Void) {
+        let url = NetworkConstants.baseURL + "/characters/" + String(id)
+        downloadCharacterBy(uri: url, completion: completion)
+    }
+    
     static func downloadCharacters(startsWith prefix:String, completion: @escaping ([MarvelCharacter]?) -> Void) {
      
         let url = NetworkConstants.baseURL + "/characters"
@@ -31,16 +36,15 @@ struct MarvelAPI {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                var characters =  [MarvelCharacter]()
-                for (_, subjson) in json["data"]["results"] {
+                var resultCharacters =  [MarvelCharacter]()
+                let characters = json["data"]["results"]
+                for (_, subjson) in characters {
                     let thumbnail = subjson["thumbnail"]
                     if let id = subjson["id"].int, let name = subjson["name"].string, let disc = subjson["description"].string, let path = thumbnail["path"].string, let ext = thumbnail["extension"].string {
-                        characters.append(MarvelCharacter(id: id, name: name, description: disc == "" ? nil : disc, thumbnail: (path, ext)))
+                        resultCharacters.append(MarvelCharacter(id: id, name: name, description: disc == "" ? nil : disc, thumbnail: (path, ext)))
                     }
                 }
-                DispatchQueue.main.async {
-                    completion(characters)
-                }
+                completion(resultCharacters)
                 
             case .failure(_):
                 completion(nil)
@@ -49,7 +53,7 @@ struct MarvelAPI {
         }
     }
     
-    //calls completion with nil when outer request is finished
+    //downloads only 5 first characters in 5 first events
     static func downloadByOneCharactersConnected(with character: MarvelCharacter, completion: @escaping ( [(character: MarvelCharacter, event: String)]? ) -> Void) {
         
         //First getting events for character Id
@@ -80,6 +84,7 @@ struct MarvelAPI {
                             if let characterNotNil = character {
                                 resultCharacters.append((character: characterNotNil, event: subjson["title"].stringValue))
                             }
+                            //stop when last character is downloaded
                             if (Int(i) == events.count - 1) && (Int(j) == characters.count - 1) {
                                 completion(resultCharacters)
                             }
@@ -93,6 +98,11 @@ struct MarvelAPI {
         }
     }
     
+}
+
+// MARK: - Private methods
+
+private extension MarvelAPI {
     static private func downloadCharacterBy(uri: String, completion: @escaping (MarvelCharacter?) -> Void) {
         let ts = Date().toMillisString()
         let parameters: Parameters = [
@@ -120,11 +130,5 @@ struct MarvelAPI {
                 completion(nil)
             }
         }
-    }
-    
-    static func downloadCharacterBy(id: Int, completion: @escaping (MarvelCharacter?) -> Void) {
-        
-        let url = NetworkConstants.baseURL + "/characters/" + String(id)
-        downloadCharacterBy(uri: url, completion: completion)
     }
 }

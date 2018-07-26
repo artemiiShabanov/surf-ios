@@ -10,11 +10,17 @@ import UIKit
 
 class ThumbnailTableViewCell: UITableViewCell {
 
+    // MARK: - Additional struct
+    
     struct State {
         let thumbnail: (path: String, ext: String)
     }
     
+    // MARK: - IBOutlets
+    
     @IBOutlet fileprivate weak var thumbnailImageView: UIImageView!
+    
+    // MARK: - Internal methods
     
     public func configure(with state: State) {
         if state.thumbnail.path.hasSuffix("image_not_available") {
@@ -24,5 +30,5 @@ class ThumbnailTableViewCell: UITableViewCell {
         }
         thumbnailImageView.makeRound()
     }
+    
 }
-

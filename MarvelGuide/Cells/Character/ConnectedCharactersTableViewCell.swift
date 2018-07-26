@@ -10,13 +10,19 @@ import UIKit
 
 class ConnectedCharactersTableViewCell: UITableViewCell {
 
+    // MARK: - IBOutlets
+    
     @IBOutlet fileprivate weak var titleLabel: UILabel!
     @IBOutlet fileprivate weak var spinner: UIActivityIndicatorView!
     @IBOutlet fileprivate weak var collectionView: UICollectionView!
     
+    // MARK: - BaseClass
+    
     override func awakeFromNib() {
         startLoadAnimating()
     }
+    
+    // MARK: - Internal methods
     
     func setDelegateAndDataSourse(view: CharacterViewController) {
         collectionView.delegate = view

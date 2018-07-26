@@ -12,12 +12,15 @@ import Kingfisher
 
 
 extension Date {
+    
     func toMillisString() -> String {
         return self.timeIntervalSince1970.description
     }
+    
 }
 
 extension UIImageView {
+    
     func download(image url: String) {
         guard let imageURL = URL(string:url) else {
             return
@@ -31,9 +34,11 @@ extension UIImageView {
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.white.cgColor
     }
+    
 }
 
 extension String {
+    
     func secureURL() -> String {
         if self.hasPrefix("http://") {
             let range = self.range(of: "http://")
@@ -44,4 +49,5 @@ extension String {
             return self
         }
     }
+    
 }

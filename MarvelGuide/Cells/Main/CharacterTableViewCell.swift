@@ -9,14 +9,20 @@
 import UIKit
 
 class CharacterTableViewCell: UITableViewCell {
+    
+    // MARK: - Additional struct
 
     struct State {
         let name: String
         let thumbnail: (path: String, ext: String)
     }
     
+    // MARK: - IBOutlets
+    
     @IBOutlet fileprivate weak var thumbnailImageView: UIImageView!
     @IBOutlet fileprivate weak var nameLabel: UILabel!
+    
+    // MARK: - Internal methods
     
     public func configure(with state: State) {
         nameLabel.text = state.name

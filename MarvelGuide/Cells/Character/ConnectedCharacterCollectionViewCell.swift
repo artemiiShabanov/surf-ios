@@ -9,6 +9,8 @@
 import UIKit
 
 class ConnectedCharacterCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - Additional struct
 
     struct State {
         let name: String
@@ -16,15 +18,21 @@ class ConnectedCharacterCollectionViewCell: UICollectionViewCell {
         let event: String
     }
     
+    // MARK: - IBOutlets
+    
     @IBOutlet fileprivate weak var nameLabel: UILabel!
     @IBOutlet fileprivate weak var eventLabel: UILabel!
     @IBOutlet fileprivate weak var thumbnailImageView: UIImageView!
+    
+    // MARK: - BaseClass
     
     override func awakeFromNib() {
         self.layer.cornerRadius = 10
         self.layer.borderColor = UIColor.white.cgColor
         self.layer.borderWidth = 1
     }
+    
+    // MARK: - Internal methods
     
     public func configure(with state: State) {
         nameLabel.text = state.name

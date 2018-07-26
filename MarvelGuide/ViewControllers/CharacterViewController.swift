@@ -9,12 +9,18 @@
 import UIKit
 
 class CharacterViewController: UIViewController {
+    
+    // MARK: - Properties
 
     public var character: MarvelCharacter?
     private var connectedCharacters = [(character: MarvelCharacter, event: String)]()
     private var charactersCell: ConnectedCharactersTableViewCell?
     
+    // MARK: - IBOutlets
+    
     @IBOutlet fileprivate weak var tableView: UITableView!
+    
+    // MARK: - BaseClass
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +29,7 @@ class CharacterViewController: UIViewController {
         registerCells()
         
         navigationItem.title = character?.name
+        //Action(share) bar button item
         let shareButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem(rawValue: 9)!, target: self, action: #selector(share))
         self.navigationItem.rightBarButtonItem = shareButton
         
@@ -32,7 +39,7 @@ class CharacterViewController: UIViewController {
                 self.charactersCell?.stopLoadAnimating()
                 return
             }
-            guard characterEventPairsNotNil.count != 0 else{
+            guard characterEventPairsNotNil.count != 0 else {
                 self.charactersCell?.cleanData(with: "No connected characters")
                 self.charactersCell?.stopLoadAnimating()
                 return
@@ -43,26 +50,12 @@ class CharacterViewController: UIViewController {
             self.charactersCell?.reloadData()
             self.charactersCell?.stopLoadAnimating()
         }
-            
     }
     
-    func registerCells() {
-        tableView.register(UINib(nibName: String(describing: ThumbnailTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: ThumbnailTableViewCell.self))
-        tableView.register(UINib(nibName: String(describing: DescriptionTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: DescriptionTableViewCell.self))
-        tableView.register(UINib(nibName: String(describing: ConnectedCharactersTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: ConnectedCharactersTableViewCell.self))
-    }
-    
-    @objc func share() {
-        if let charecterNotNil = character {
-            let activityVC = UIActivityViewController(activityItems: ["marvelguide://\(charecterNotNil.id)"], applicationActivities: nil)
-            activityVC.popoverPresentationController?.sourceView = self.view
-            self.present(activityVC, animated: true, completion: nil)
-        }
-        
-    }
 }
 
-// MARK:- TableView section
+// MARK: - UITableViewDelegate, UITableViewDataSource
+
 extension CharacterViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -86,15 +79,16 @@ extension CharacterViewController: UITableViewDelegate, UITableViewDataSource {
             case 1:
                 if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DescriptionTableViewCell.self)) as? DescriptionTableViewCell {
                     if let description = characterNotNil.description {
-                        print("?" + description + "?")
-                        let state = DescriptionTableViewCell.State(description: description)
-                        cell.configure(with: state)
-                        return cell
-                    } else {
-                        let state = DescriptionTableViewCell.State(description: "Sorry. Character description is empty")
-                        cell.configure(with: state)
-                        return cell
+                        if !description.trimmingCharacters(in: .whitespaces).isEmpty {
+                            print("?" + description + "?")
+                            let state = DescriptionTableViewCell.State(description: description)
+                            cell.configure(with: state)
+                            return cell
+                        }
                     }
+                    let state = DescriptionTableViewCell.State(description: "Sorry. Character description is empty")
+                        cell.configure(with: state)
+                        return cell
                 }
             case 2:
                 if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ConnectedCharactersTableViewCell.self)) as? ConnectedCharactersTableViewCell {
@@ -120,7 +114,8 @@ extension CharacterViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 
-//MARK: -CollectionView section
+//MARK: - UICollectionViewDelegate, UICollectionViewDataSource
+
 extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -158,4 +153,23 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
         }
     }
     
+}
+
+// MARK: - Private methods
+
+private extension CharacterViewController {
+    
+    func registerCells() {
+        tableView.register(UINib(nibName: String(describing: ThumbnailTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: ThumbnailTableViewCell.self))
+        tableView.register(UINib(nibName: String(describing: DescriptionTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: DescriptionTableViewCell.self))
+        tableView.register(UINib(nibName: String(describing: ConnectedCharactersTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: ConnectedCharactersTableViewCell.self))
+    }
+    
+    @objc func share() {
+        if let charecterNotNil = character {
+            let activityVC = UIActivityViewController(activityItems: ["marvelguide://\(charecterNotNil.id)"], applicationActivities: nil)
+            activityVC.popoverPresentationController?.sourceView = self.view
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
 }

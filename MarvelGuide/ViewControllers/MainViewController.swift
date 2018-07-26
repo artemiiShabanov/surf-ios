@@ -10,15 +10,20 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    // MARK: - IBOutlets
+    
     @IBOutlet fileprivate weak var spinner: UIActivityIndicatorView!
     @IBOutlet fileprivate weak var statusLabel: UILabel!
     @IBOutlet fileprivate weak var searchBar: UISearchBar!
     @IBOutlet fileprivate weak var tableView: UITableView!
-    private var characters = [MarvelCharacter]()
-    public var initialCharacter: MarvelCharacter?
     
+    // MARK: - Properties
+    
+    private var characters = [MarvelCharacter]()
+    public var initialCharacter: MarvelCharacter? //is not nil when app is launched throw url
     private var lastRequestId = 0
     
+    // MARK: - BaseClass
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +39,10 @@ class MainViewController: UIViewController {
         searchBar.delegate = self
         
         spinner.stopAnimating()
-        
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //if app is launched throw link with character id
+        //if app is launched throw url with character id
         if let character = initialCharacter {
             initialCharacter = nil
             push(with: character)
@@ -49,8 +52,8 @@ class MainViewController: UIViewController {
 }
 
 
+// MARK: - UITableViewDelegate, UITableViewDataSource
 
-// MARK: tableView section
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,7 +78,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120.0
     }
@@ -92,24 +94,32 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func push(with character: MarvelCharacter) {
-        let cvc = CharacterViewController(nibName: "CharacterViewController", bundle: nil)
-        cvc.character = character
-        navigationController?.pushViewController(cvc, animated: true)
-    }
 }
 
-// MARK: searchBar section
+// MARK: - UISearchBarDelegate
+
 extension MainViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         //throttling magic
-        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(MainViewController.onSearch), object: nil)
-        self.perform(#selector(MainViewController.onSearch), with: nil, afterDelay: 0.5)
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(onSearch), object: nil)
+        self.perform(#selector(onSearch), with: nil, afterDelay: 0.5)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.endEditing(true)
+    }
+    
+}
+
+// MARK: - Private methods
+
+private extension MainViewController {
+    
+    func push(with character: MarvelCharacter) {
+        let cvc = CharacterViewController(nibName: "CharacterViewController", bundle: nil)
+        cvc.character = character
+        navigationController?.pushViewController(cvc, animated: true)
     }
     
     @objc func onSearch() {
@@ -119,20 +129,19 @@ extension MainViewController: UISearchBarDelegate {
                 spinner.startAnimating()
                 lastRequestId += 1
                 let requestId = lastRequestId
-                MarvelAPI.downloadCharacters(startsWith: searchText) { optCharacters in
+                MarvelAPI.downloadCharacters(startsWith: searchText) { characters in
                     if requestId != self.lastRequestId {
-                        print("ep")
                         return
                     }
-                    guard let characters = optCharacters else{
+                    guard let charactersNotNil = characters else{
                         self.hideTableWith(text: "Oops! Some problems with internet connection")
                         return
                     }
-                    if characters.isEmpty{
+                    if charactersNotNil.isEmpty{
                         self.hideTableWith(text: "Sorry. There are no characters starts like \"\(searchText)\"")
                         return
                     }
-                    self.characters = characters
+                    self.characters = charactersNotNil
                     self.tableView.reloadData()
                     self.tableView.isHidden = false
                     self.spinner.stopAnimating()
@@ -149,8 +158,8 @@ extension MainViewController: UISearchBarDelegate {
         self.statusLabel.text = text
         self.spinner.stopAnimating()
     }
+    
 }
-
 
 
 
