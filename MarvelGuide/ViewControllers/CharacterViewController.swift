@@ -23,6 +23,8 @@ class CharacterViewController: UIViewController {
         registerCells()
         
         navigationItem.title = character?.name
+        let shareButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem(rawValue: 9)!, target: self, action: #selector(share))
+        self.navigationItem.rightBarButtonItem = shareButton
         
         MarvelAPI.downloadByOneCharactersConnected(with: character!) { characterEventPairs in
             guard let characterEventPairsNotNil = characterEventPairs else {
@@ -48,6 +50,15 @@ class CharacterViewController: UIViewController {
         tableView.register(UINib(nibName: String(describing: ThumbnailTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: ThumbnailTableViewCell.self))
         tableView.register(UINib(nibName: String(describing: DescriptionTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: DescriptionTableViewCell.self))
         tableView.register(UINib(nibName: String(describing: ConnectedCharactersTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: ConnectedCharactersTableViewCell.self))
+    }
+    
+    @objc func share() {
+        if let charecterNotNil = character {
+            let activityVC = UIActivityViewController(activityItems: ["marvelguide://\(charecterNotNil.id)"], applicationActivities: nil)
+            activityVC.popoverPresentationController?.sourceView = self.view
+            self.present(activityVC, animated: true, completion: nil)
+        }
+        
     }
 }
 
