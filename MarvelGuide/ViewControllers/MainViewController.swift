@@ -28,7 +28,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationItem.title = "Characters2"
+        navigationItem.title = "Characters1"
         
         tableView.dataSource = self
         tableView.delegate = self
